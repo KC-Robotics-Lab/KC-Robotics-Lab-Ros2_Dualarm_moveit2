@@ -1,0 +1,53 @@
+cmake_minimum_required(VERSION 3.8)
+project(inspire_hand_interface)
+
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
+
+# find dependencies
+find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
+
+rosidl_generate_interfaces(${PROJECT_NAME}
+  "action/SetAngle.action"
+  "msg/Posact.msg"
+  "msg/Angleact.msg"
+  "msg/Forceact.msg"
+  "msg/Current.msg"
+  "msg/Error.msg"
+  "msg/Temp.msg"
+  "srv/Setangle.srv"
+  "srv/Getangleact.srv"
+  "srv/Getangleset.srv"
+  "srv/Setpos.srv"
+  "srv/Getposact.srv"
+  "srv/Getposset.srv"
+  "srv/Setspeed.srv"
+  "srv/Getspeedset.srv"
+  "srv/Setforce.srv"
+  "srv/Getforceact.srv"
+  "srv/Getforceset.srv"
+  "srv/Getcurrentact.srv"
+  "srv/Geterror.srv"
+  "srv/Gettemp.srv"
+  "srv/Gethandid.srv"
+  "srv/Getbaudrate.srv"
+  DEPENDENCIES std_msgs
+)
+
+if(BUILD_TESTING)
+  find_package(ament_lint_auto REQUIRED)
+  # the following line skips the linter which checks for copyrights
+  # comment the line when a copyright and license is added to all source files
+  set(ament_cmake_copyright_FOUND TRUE)
+  # the following line skips cpplint (only works in a git repo)
+  # comment the line when this package is in a git repo and when
+  # a copyright and license is added to all source files
+  set(ament_cmake_cpplint_FOUND TRUE)
+  ament_lint_auto_find_test_dependencies()
+endif()
+
+ament_package()

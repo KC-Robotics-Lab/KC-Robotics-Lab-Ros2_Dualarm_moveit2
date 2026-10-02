@@ -1,0 +1,8 @@
+# Request
+float32 rx
+float32 ry
+float32 rz
+---
+# Response
+bool accepted
+string message

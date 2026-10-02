@@ -1,0 +1,10 @@
+# float64 angle_deg
+float64 r_rx_deg
+float64 r_ry_deg
+float64 r_rz_deg
+# float64 l_rx_deg
+# float64 l_ry_deg
+# float64 l_rz_deg
+---
+bool success
+string message

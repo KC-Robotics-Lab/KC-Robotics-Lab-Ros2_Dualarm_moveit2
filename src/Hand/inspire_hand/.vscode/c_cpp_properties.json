@@ -1,0 +1,25 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/kmk/Workspace/Hand/install/serial/include/**",
+        "/home/kmk/Workspace/Hand/install/inspire_hand_interface/include/**",
+        "/opt/ros/humble/include/**",
+        "/home/kmk/Workspace/Hand/src/inspire_hand/inspire_hand_interface/include/**",
+        "/home/kmk/Workspace/Hand/src/inspire_hand/inspire_hand_pkg/include/**",
+        "/home/kmk/Workspace/Hand/src/inspire_hand/serial/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

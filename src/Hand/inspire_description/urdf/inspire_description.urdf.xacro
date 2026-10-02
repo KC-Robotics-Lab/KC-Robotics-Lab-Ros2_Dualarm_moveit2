@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="inspire_description">
+    <xacro:arg name="initial_positions_file" default="$(find inspire_description)/config/initial_positions.yaml"/>
+
+    <!-- Import inspire_description urdf file -->
+    <xacro:include filename="$(find inspire_description)/urdf/urdf_right_with_force_sensor.urdf" />
+
+    <!-- Import control_xacro -->
+    <xacro:include filename="$(find inspire_description)/config/inspire_description.ros2_control.xacro" />
+
+    <joint name="right_gripper_joint" type="fixed">
+        <parent link="tcp"/>
+        <child link="hand_base_link"/>
+        <origin xyz="0 0 0.01" rpy="0 0 0"/>
+    </joint>
+
+</robot>

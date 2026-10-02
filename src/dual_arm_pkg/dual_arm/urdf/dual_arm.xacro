@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="dual_robot_system">
+
+  <link name="world" />
+
+  <xacro:include filename="$(find ur_description)/urdf/ur.urdf.xacro"/>
+  <xacro:include filename="$(find rbpodo_description)/robots/rb3_730es_u.urdf.xacro" />
+
+<!-- 20251028_원본코드 -->
+  <link name="table_link">
+    <visual>
+      <origin xyz="0 -0.13 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="1.0 0.8 0"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="0 -0.13 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="1.0 0.8 0"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="table_fixed_joint" type="fixed">
+    <parent link="world"/>
+    <child link="table_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <link name="cam_stand_link">
+    <visual>
+      <origin xyz="0 0.135 0.535" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.06 0.25 1.07"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0.135 0.535" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.06 0.25 1.07"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="cam_stand_fixed_joint" type="fixed">
+    <parent link="table_link"/>
+    <child link="cam_stand_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+<!-- 20251028_변경중 -->
+<!-- 여기서 높이만 조절한다면 cam_stand_fixed_joint origin의 z값만 변경하면됨 -->
+  <!-- <link name="table_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="1.0 0.8 0"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="1.0 0.8 0"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="table_fixed_joint" type="fixed">
+    <parent link="world"/>
+    <child link="table_link"/>
+    <origin xyz="0 -0.13 0" rpy="0 0 0"/>
+  </joint>
+
+  <link name="cam_stand_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.06 0.06 1.065"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.06 0.06 1.065"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="cam_stand_fixed_joint" type="fixed">
+    <parent link="table_link"/>
+    <child link="cam_stand_link"/>
+    <origin xyz="0 0.29 0.5325" rpy="0 0 0"/>
+  </joint>
+
+  <link name="cam_bracket_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.14 0.15 0.085"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.14 0.15 0.085"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="cam_bracket_fixed_joint" type="fixed">
+    <parent link="cam_stand_link"/>
+    <child link="cam_bracket_link"/>
+    <origin xyz="0 -0.105 0" rpy="0 0 0"/>
+  </joint>
+
+  <link name="camera_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 -1.57"/>
+      <geometry>
+        <box size="0.09 0.025 0.025"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 -1.57"/>
+      <geometry>
+        <box size="0.09 0.025 0.025"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="camera_joint" type="fixed">
+    <parent link="cam_bracket_link"/>
+    <child link="camera_link"/>
+    <origin xyz="0 -0.0875 0" rpy="0 0 -1.57"/>
+  </joint> -->
+
+</robot>

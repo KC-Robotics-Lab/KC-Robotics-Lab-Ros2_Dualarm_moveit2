@@ -1,0 +1,11 @@
+# Goal
+float64 rx_deg
+float64 ry_deg
+float64 rz_deg
+---
+# Result
+bool success
+string message
+---
+# Feedback (optional)
+float64 progress

@@ -1,0 +1,9 @@
+float64 left_x
+float64 left_y
+float64 left_z
+float64 left_rx
+float64 left_ry
+float64 left_rz
+---
+bool success
+string message

@@ -1,0 +1,8 @@
+# Request
+string command  # "home" or "move_tcp"
+geometry_msgs/PoseStamped left_target_pose
+geometry_msgs/PoseStamped right_target_pose
+---
+# Response
+bool success
+string message

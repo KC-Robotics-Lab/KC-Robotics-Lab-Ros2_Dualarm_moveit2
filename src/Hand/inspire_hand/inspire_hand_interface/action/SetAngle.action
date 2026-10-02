@@ -1,0 +1,36 @@
+# # Goal
+# uint8 hand_id
+# uint16 angle0
+# uint16 angle1
+# uint16 angle2
+# uint16 angle3
+# uint16 angle4
+# uint16 angle5
+
+# ---
+# # Result
+# bool success
+# bool object_grasped      # 물체를 감지했는지 여부
+
+# ---
+# # Feedback
+# std_msgs/UInt16MultiArray tactile_values   # nail 센서 전체 데이터
+# float64 avg_pressure                       # 0 제외 유효값 평균
+# uint32 valid_sum                           # 0 제외 합산
+# uint32 valid_count                         # 0 제외 센서 개수
+# int16[6] current_angles
+
+# Goal
+uint16 angle0
+uint16 angle1
+uint16 angle2
+uint16 angle3
+uint16 angle4
+uint16 angle5
+uint8 hand_id
+---
+# Result
+bool success
+---
+# Feedback
+uint16[6] current_angles

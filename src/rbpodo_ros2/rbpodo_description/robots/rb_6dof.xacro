@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="link" params="name model_id:=^ has_inertial:=true">
+    <xacro:property name="links_props_file" value="$(find rbpodo_description)/robots/${model_id}/link.yaml" />
+    <xacro:property name="links_props" value="${xacro.load_yaml(links_props_file)}" />
+
+    <link name="${name}">
+      <visual>
+        <geometry>
+          <mesh filename="package://rbpodo_description/meshes/${model_id}/visual/${name}.dae" />
+        </geometry>
+      </visual>
+
+      <collision>
+        <geometry>
+          <mesh filename="package://rbpodo_description/meshes/${model_id}/collision/${name}.stl" />
+        </geometry>
+      </collision>
+
+      <xacro:if value="${has_inertial}">
+        <!-- Check whether this property is available or not -->
+        <xacro:property name="props" value="${links_props[name]}" />
+        <xacro:property name="inertial" value="${props.inertial}" />
+        <inertial>
+          <origin rpy="${inertial.origin.rpy}" xyz="${inertial.origin.xyz}" />
+          <mass value="${inertial.mass}" />
+          <xacro:property name="I" value="${inertial.inertia}" />
+          <inertia ixx="${I.xx}" ixy="${I.xy}" ixz="${I.xz}" iyy="${I.yy}" iyz="${I.yz}" izz="${I.zz}" />
+        </inertial>
+      </xacro:if>
+    </link>
+  </xacro:macro>
+
+  <xacro:macro name="joint" params="name model_id:=^">
+    <xacro:property name="joints_props_file" value="$(find rbpodo_description)/robots/${model_id}/joint.yaml" />
+    <xacro:property name="joints_props" value="${xacro.load_yaml(joints_props_file)}" />
+    <!-- Check whether name is in joints_props or not -->
+    <xacro:property name="props" value="${joints_props[name]}" />
+
+    <joint name="${name}" type="revolute">
+      <origin xyz="${props.origin.xyz}" rpy="${props.origin.rpy}" />
+      <parent link="${props.parent}" />
+      <child link="${props.child}" />
+      <axis xyz="${props.axis.xyz}" />
+
+      <xacro:property name="limit" value="${props.limit}" />
+      <limit lower="${limit.lower}" upper="${limit.upper}" effort="${limit.effort}" velocity="${limit.velocity}" />
+    </joint>
+  </xacro:macro>
+
+  <xacro:macro name="rb_6dof" params="model_id prefix='' tcp_name='tcp' tcp_xyz='0 0 0' tcp_rpy='0 0 0'">
+    <xacro:link name="${prefix}link0" has_inertial="false" />
+    <xacro:link name="${prefix}link1" />
+    <xacro:link name="${prefix}link2" />
+    <xacro:link name="${prefix}link3" />
+    <xacro:link name="${prefix}link4" />
+    <xacro:link name="${prefix}link5" />
+    <xacro:link name="${prefix}link6" />
+    <!-- <link name="${prefix}${tcp_name}" /> -->
+
+    <!-- (신규) tcp 상위 링크 생성 -->
+    <link name="${prefix}${tcp_name}_base" />
+
+    <!-- (기존) tcp 프레임: 여기에 디버깅용 마커(구 + XYZ 축)도 넣는다 -->
+    <link name="${prefix}${tcp_name}">
+      <!-- 디버깅용 구 (빨강) -->
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry><sphere radius="0.005"/></geometry> <!-- 12mm -->
+        <material name="${prefix}${tcp_name}_dot"><color rgba="0 0 1 1"/></material>
+      </visual>
+    </link>
+
+    <!-- 기존 체인 유지: link6 -> (tcp 상위) tcp_base -->
+    <joint name="${prefix}${tcp_name}_base_joint" type="fixed">
+      <parent link="${prefix}link6"/>
+      <child  link="${prefix}${tcp_name}_base"/>
+      <!-- 원래 쓰던 tcp_xyz/tcp_rpy는 tcp_base에 적용 (기존 동작 보존) -->
+      <origin xyz="${tcp_xyz}" rpy="${tcp_rpy}"/>
+    </joint>
+
+    <!-- 새 오프셋 적용: tcp_base -> tcp (hand TCP 오프셋) -->
+    <!-- 41.96, -95.41, 206.36 mm => 0.04196, -0.09541, 0.20636 m -->
+    <joint name="${prefix}${tcp_name}_offset_joint" type="fixed">
+      <parent link="${prefix}${tcp_name}_base"/>
+      <child  link="${prefix}${tcp_name}"/>
+      <origin xyz="0.04196 -0.09541 0.20636" rpy="0 0 0"/>
+    </joint>
+
+    <xacro:joint name="${prefix}base" />
+    <xacro:joint name="${prefix}shoulder" />
+    <xacro:joint name="${prefix}elbow" />
+    <xacro:joint name="${prefix}wrist1" />
+    <xacro:joint name="${prefix}wrist2" />
+    <xacro:joint name="${prefix}wrist3" />
+    <!-- <joint name="${prefix}${tcp_name}_joint" type="fixed">
+      <origin xyz="${tcp_xyz}" rpy="${tcp_rpy}" />
+      <parent link="${prefix}link6" />
+      <child link="${prefix}${tcp_name}" />
+    </joint> -->
+  </xacro:macro>
+
+</robot>

@@ -1,0 +1,15 @@
+<library path="moveit_trac_ik_kinematics_plugin">
+  <class name="trac_ik_kinematics_plugin/TRAC_IKKinematicsPlugin" type="trac_ik_kinematics_plugin::TRAC_IKKinematicsPlugin" base_class_type="kinematics::KinematicsBase">
+    <description>
+      A implementation of kinematics as a plugin based on TRAC-IK.
+    </description>
+  </class>
+</library>
+
+<!-- <library path="libtrac_ik_kinematics_plugin">
+  <class name="trac_ik_kinematics_plugin/TRAC_IKKinematicsPlugin"
+         type="TRAC_IKKinematicsPlugin"
+         base_class_type="kdl_kinematics_plugin::KDLKinematicsPlugin">
+    <description>TracIK Kinematics Plugin</description>
+  </class>
+</library> -->

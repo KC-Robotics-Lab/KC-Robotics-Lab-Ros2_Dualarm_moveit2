@@ -1,0 +1,28 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/opt/ros/humble/include/**",
+        "/home/kmk/Workspace/zkc_dual_arm/src/Universal_Robots_ROS2_Driver/ur_calibration/include/**",
+        "/home/kmk/Workspace/zkc_dual_arm/src/Universal_Robots_ROS2_Driver/ur_controllers/include/**",
+        "/home/kmk/Workspace/zkc_dual_arm/src/Universal_Robots_ROS2_Driver/ur_pick_and_place_moveit/include/**",
+        "/home/kmk/Workspace/zkc_dual_arm/src/Universal_Robots_ROS2_Driver/ur_pick_and_place_msgs/include/**",
+        "/home/kmk/Workspace/zkc_dual_arm/src/Universal_Robots_ROS2_Driver/ur_robot_driver/include/**",
+        "/home/kmk/Workspace/zkc_dual_arm/src/rbpodo/include/**",
+        "/home/kmk/Workspace/zkc_dual_arm/src/rbpodo_ros2/rbpodo_hardware/include/**",
+        "/home/kmk/Workspace/zkc_dual_arm/src/trac_ik/trac_ik_lib/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>dual_arm</name>
+  <version>0.0.0</version>
+  <description>TODO: Package description</description>
+  <maintainer email="kmk@todo.todo">kmk</maintainer>
+  <license>TODO: License declaration</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>rclpy</depend>
+  <depend>std_msgs</depend>
+
+  <depend>ur_pick_and_place_msgs</depend>
+  <depend>rbpodo_msgs</depend>
+  <depend>dual_arm_msg</depend>
+  <depend>inspire_hand_interface</depend>  
+
+  <depend>moveit_ros_planning_interface</depend>
+  <depend>ros_ur_driver</depend>
+
+  <depend>robotiq_hande_ros2_driver</depend>
+  <depend>gripper_srv</depend>
+
+  <depend>trac_ik_kinematics_plugin</depend>
+
+  <depend>ur_dashboard_msgs</depend>
+  <depend>std_srvs</depend>
+
+  <depend>tf2_eigen</depend>
+
+  <depend>rclcpp_action</depend>
+  <depend>control_msgs</depend>
+  <depend>trajectory_msgs</depend>
+
+  <build_depend>yaml-cpp</build_depend>
+  <exec_depend>yaml-cpp</exec_depend>
+
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+  <exec_depend>moveit_kinematics</exec_depend>
+  <exec_depend>moveit_planners_ompl</exec_depend>
+  <exec_depend>moveit_ros_move_group</exec_depend>
+  <exec_depend>moveit_ros_visualization</exec_depend>
+  <exec_depend>moveit_servo</exec_depend>
+  <exec_depend>moveit_simple_controller_manager</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+  <exec_depend>ur_description</exec_depend>
+  <exec_depend>urdf</exec_depend>
+  <exec_depend>warehouse_ros_sqlite</exec_depend>
+  <exec_depend>xacro</exec_depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
